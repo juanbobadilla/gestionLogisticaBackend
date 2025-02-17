@@ -316,7 +316,15 @@ class productoController extends Controller
         }
     }
 
-
+    /**
+     * Método para obtener los datos de un informe a través de un procedimiento almacenado.
+     * 
+     * Ejecuta un procedimiento almacenado llamado `consultaInforme` en la base de datos utilizando la función `DB::select`.
+     * Si la ejecución es exitosa, retorna los datos obtenidos en formato JSON con un mensaje de éxito.
+     * Si ocurre un error durante la ejecución del procedimiento almacenado, captura la excepción y retorna un mensaje de error con código 500.
+     *
+     * @return  Retorna los datos obtenidos del procedimiento almacenado en formato JSON o un mensaje de error si ocurre algún fallo.
+     */
     public function getInforme(){
 
         try {

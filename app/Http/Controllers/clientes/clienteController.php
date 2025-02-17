@@ -10,6 +10,14 @@ use Throwable;
 
 class clienteController extends Controller
 {
+    /**
+     * Método para obtener todos los registros de clientes.
+     * 
+     * Obtiene todos los registros de la tabla "cliente" y los retorna en formato JSON. 
+     * Si ocurre un error durante la solicitud, se captura la excepción y se retorna un mensaje de error con código 404.
+     *
+     * @return Retorna todos los clientes en formato JSON o un mensaje de error si ocurre un fallo.
+     */
     public function index(){
         try {
             $cliente = clienteModel::all();
@@ -19,6 +27,16 @@ class clienteController extends Controller
         }
     }
 
+    /**
+     * Método para obtener los detalles de un cliente por su ID.
+     * 
+     * Busca un cliente en la base de datos utilizando el ID proporcionado. 
+     * Si el cliente existe, retorna los datos en formato JSON. 
+     * Si no se encuentra, devuelve un mensaje de error con código 404.
+     *
+     * @param int $idCliente El ID del cliente a buscar.
+     * @return Retorna los datos del cliente en formato JSON o un mensaje de error si no se encuentra.
+     */
     public function clientePorId($idCliente){
         try {
             $cliente = clienteModel::find($idCliente);
@@ -33,6 +51,16 @@ class clienteController extends Controller
         
     }
 
+    /**
+     * Método para guardar un nuevo cliente.
+     * 
+     * Valida los datos enviados a través de la solicitud y crea un nuevo cliente en la base de datos. 
+     * Si la validación es exitosa, guarda el cliente y retorna un mensaje de éxito con los datos guardados. 
+     * Si la validación falla, retorna un mensaje de error con código 422.
+     *
+     * @param  $request La solicitud que contiene los datos del cliente.
+     * @return Retorna un mensaje de éxito con los datos guardados o un mensaje de error si la validación falla.
+     */
     public function store(Request $request){
         try {
             
@@ -61,6 +89,16 @@ class clienteController extends Controller
         
     }
 
+    /**
+     * Método para actualizar los datos de un cliente existente.
+     * 
+     * Valida los datos enviados a través de la solicitud y, si el cliente con el ID proporcionado existe, 
+     * actualiza sus datos en la base de datos. Si la validación falla, retorna un mensaje de error con código 422.
+     * Si el cliente no se encuentra, lanza una excepción.
+     *
+     * @param  $request La solicitud que contiene los datos para actualizar el cliente.
+     * @return Retorna un mensaje de éxito con los datos actualizados o un mensaje de error si la validación falla.
+     */
     public function update(Request $request){
         try {
             
@@ -90,6 +128,16 @@ class clienteController extends Controller
         
     }
 
+    /**
+     * Método para eliminar un cliente existente por su ID.
+     * 
+     * Valida que se proporcione un ID de cliente. Si el cliente con el ID dado existe, lo elimina de la base de datos 
+     * y retorna un mensaje de éxito con los datos eliminados. Si no se encuentra el cliente, retorna un mensaje de error con código 422.
+     * En caso de cualquier error durante el proceso, se captura la excepción y se retorna un mensaje con código 422.
+     *
+     * @param  $request La solicitud que contiene el ID del cliente a eliminar.
+     * @return Retorna un mensaje de éxito si el cliente es eliminado o un mensaje de error si el cliente no existe o hay un fallo en el proceso.
+     */
     public function delete(Request $request){
         
         try {
