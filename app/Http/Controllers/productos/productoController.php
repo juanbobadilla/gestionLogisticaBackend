@@ -35,7 +35,7 @@ class productoController extends Controller
                 return response()->json(["message" => "No hay productos registrados"], 200);
             }
 
-            return response()->json(["message" => "Lista de productos obtenida exitosamente", "data" => $productos]);
+            return response()->json($productos);
 
         } catch (\Exception $e) {
             return response()->json(["error" => "Error al obtener los datos: " . $e->getMessage()], 500);

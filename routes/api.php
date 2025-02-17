@@ -33,7 +33,6 @@ Route::group([
 
     //endpoints para productos
     Route::get('/producto/informe', [productoController::class,'getInforme'])->middleware('auth:api')->name('obtenerInforme');
-
     Route::get('/producto', [productoController::class,'getAllDatosEntrega'])->middleware('auth:api')->name('obtenerProductos');
     Route::get('/producto/{id}', [productoController::class,'getDatosEntregaById'])->middleware('auth:api')->name('obtenerProductoId');
     Route::post('/producto/create', [productoController::class,'storeDatosEntrega'])->middleware('auth:api')->name('crearProducto');
